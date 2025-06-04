@@ -7,35 +7,35 @@ interface StatsServiceInterface
     /**
      * @return mixed
      */
-    public function lastMonth();
+    public function lastMonth(): mixed;
 
     /**
      * @return mixed
      */
-    public function lastYear();
+    public function lastYear(): mixed;
 
     /**
      * @return mixed
      */
-    public function lastWeek();
+    public function lastWeek(): mixed;
 
     /**
      * @return mixed
      */
-    public function avgLastYear();
+    public function avgLastYear(): mixed;
 
     /**
      * @return mixed
      */
-    public function avgLastWeek();
+    public function avgLastWeek(): mixed;
 
     /**
      * @return mixed
      */
-    public function avgLastMonth();
+    public function avgLastMonth(): mixed;
 
     /**
      * @return mixed
      */
-    public function statsToPDF();
+    public function statsToPDF(): mixed;
 }
