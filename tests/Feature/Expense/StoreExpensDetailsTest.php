@@ -13,7 +13,8 @@ test('user can create expense detail with valid data', function () {
 
     Expense::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     // ایجاد توکن با Sanctum
@@ -33,7 +34,8 @@ test('user can not create expense detail with invalid data', function () {
 
     Expense::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     Sanctum::actingAs($user);

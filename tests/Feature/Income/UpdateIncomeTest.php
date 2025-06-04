@@ -13,7 +13,8 @@ test('user can update income with valid data', function () {
 
     Income::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     // ایجاد توکن با Sanctum
@@ -33,7 +34,8 @@ test('user can not update income with invalid data', function () {
 
     Income::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     Sanctum::actingAs($user);

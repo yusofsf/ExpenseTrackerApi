@@ -13,7 +13,8 @@ test('user can update expense with valid data', function () {
 
     Expense::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     // ایجاد توکن با Sanctum
@@ -33,7 +34,8 @@ test('user can not update expense with invalid data', function () {
 
     Expense::factory()->create([
         'title' => 'buy a book',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'book'
     ]);
 
     Sanctum::actingAs($user);

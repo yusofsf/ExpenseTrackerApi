@@ -13,7 +13,8 @@ test('user can create income detail with valid data', function () {
 
     Income::factory()->create([
         'title' => 'پروژه برنامه نویسی',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'پروژه'
     ]);
 
     // ایجاد توکن با Sanctum
@@ -33,7 +34,8 @@ test('user can not create expense detail with invalid data', function () {
 
     Income::factory()->create([
         'title' => 'پروژه ساختمانی',
-        'user_id' => $user->id
+        'user_id' => $user->id,
+        'category' => 'پروژه'
     ]);
 
     Sanctum::actingAs($user);
