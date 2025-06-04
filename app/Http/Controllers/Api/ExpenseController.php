@@ -10,6 +10,7 @@ use App\Http\Requests\ExpenseDetail\ExpenseDetailUpdateRequest;
 use App\Models\Expense;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
 class ExpenseController extends Controller
@@ -17,11 +18,31 @@ class ExpenseController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
+        $query = Expense::query()->with('expenseDetail');
+
+        if ($request->string('amount')) {
+            $query->whereHas('expenseDetail', function ($query) use ($request) {
+                $query->where('amount', $request->string('amount'));
+            });
+        }
+
+        if ($request->string('category')) {
+            $query->where('category', $request->string('category'));
+        }
+
+        if ($request->string('date')) {
+            $query->whereHas('expenseDetail', function ($query) use ($request) {
+                $query->where('date', $request->string('date'));
+            });
+        }
+
+        $result = $query->get();
+
         return Response::json([
             'message' => 'All Expenses',
-            'result' => Expense::with('expenseDetail')->get()
+            'result' => $result
         ]);
     }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\ExpenseDetailController;
 use App\Http\Controllers\Api\IncomeController;
 use App\Http\Controllers\Api\IncomeDetailController;
+use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -65,4 +66,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/stats/avg-last-month', 'avgLastMonth');
         Route::get('/stats/pdf', 'statsToPDF');
     });
+
+    Route::get('/search', SearchController::class);
 });

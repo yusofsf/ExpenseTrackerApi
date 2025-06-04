@@ -10,6 +10,7 @@ use App\Http\Requests\IncomeDetail\IncomeDetailUpdateRequest;
 use App\Models\Income;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
 class IncomeController extends Controller
@@ -17,11 +18,31 @@ class IncomeController extends Controller
     /**
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
+        $query = Income::query()->with('incomeDetail');
+
+        if ($request->has('amount')) {
+            $query->whereHas('incomeDetail', function ($query) use ($request) {
+                $query->where('amount', $request->string('amount'));
+            });
+        }
+
+        if ($request->has('category')) {
+            $query->where('category', $request->string('category'));
+        }
+
+        if ($request->has('date')) {
+            $query->whereHas('incomeDetail', function ($query) use ($request) {
+                $query->where('date', $request->string('date'));
+            });
+        }
+
+        $result = $query->get();
+
         return Response::json([
             'message' => 'All Incomes',
-            'result' => Income::all()
+            'result' => $result
         ]);
     }
 
