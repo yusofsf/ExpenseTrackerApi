@@ -54,11 +54,7 @@ class UserController extends Controller
      */
     public function update(User $user, UserUpdateRequest $request): JsonResponse
     {
-        [$phoneNumber, $userName] = $request->validated();
-
-        $user::update([
-            $phoneNumber, $userName
-        ]);
+        $user->update($request->validated());
 
 
         return Response::json([
