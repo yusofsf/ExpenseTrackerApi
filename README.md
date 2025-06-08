@@ -26,7 +26,7 @@
 #### 1. پروژه را clone کنید
 ```bash
 git clone https://github.com/yusofsf/ExpenseTrackerApi.git
-cd DeliciousFood
+cd ExpenseTrackerApi
 ```
 
 #### 1.2 نصب وابستگی ها
