@@ -72,7 +72,10 @@ app/
 ---
 <div dir="rtl">
 
-
-این پروژه توسط [yusofsf](https://github.com/yusofsf) توسعه داده شده است.
+#### این پروژه شامل 22 Feature Test هست
+برای اجرای تست ها
+```bash
+php artisan test
+```
 
 </div>
