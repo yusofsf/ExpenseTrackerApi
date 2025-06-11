@@ -9,8 +9,9 @@ use App\Http\Requests\IncomeDetail\IncomeDetailStoreRequest;
 use App\Http\Requests\IncomeDetail\IncomeDetailUpdateRequest;
 use App\Models\Income;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+
 use Illuminate\Support\Facades\Response;
 
 class IncomeController extends Controller
